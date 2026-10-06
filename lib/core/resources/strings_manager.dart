@@ -19,4 +19,20 @@ abstract final class StringsManager {
   static const String alreadyHaveAcc  = "Already have an account?";
   static const String dontHaveAcc  = "Don’t have an account ?";
   static const String signGoogle = "Sign up with Google";
+  static const String nameCantBeEmpty = "Name can't be empty";
+  static const String emailCantBeEmpty = "Email can't be Empty";
+  static const String invalidEmail = "Invalid email";
+  static const String passwordCantBeEmpty = "Password can't be empty";
+  static const String passRgex = "Password must be 8+ characters, with at least 1 uppercase letter and 1 special character.";
+  static const String passwordsDontMtch = "Passwords don't match";
+  static const String signUP = "Sign UP";
+  static const String login = "Login";
+  static const String or = "Or";
+  static const String skip = "Skip";
+  static const String getStarted = "Get started";
+  static const String next = "Next";
+  static const String english = "English";
+  static const String arabic = "Arabic";
+  static const String forgetPass = "Forget Password? ";
+  static const String resetPass = "Reset Password? ";
 }

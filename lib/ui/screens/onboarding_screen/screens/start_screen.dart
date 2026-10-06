@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/resources/color_manager.dart';
+import '../../../../l10n/app_localizations.dart';
 import '../../../../model/onboarding_model.dart';
 import '../widgets/onboarding_content.dart';
 
@@ -44,6 +45,7 @@ class _StartScreenState extends State<StartScreen> {
       child: Builder(
         builder: (context) {
           final provider = context.watch<OnboardingProvider>();
+          final onboardingList = onboardingModel.onboardingList(context);
           return Scaffold(
             appBar: AppBar(
               title: Image.asset(
@@ -54,7 +56,7 @@ class _StartScreenState extends State<StartScreen> {
               leading: provider.currentIndex == 1 || provider.currentIndex == 2
                   ?
                 Padding(
-                  padding: const EdgeInsets.only(left: 8),
+                  padding: const EdgeInsetsDirectional.only(start: 8),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
@@ -75,7 +77,7 @@ class _StartScreenState extends State<StartScreen> {
               actions: provider.currentIndex == 0 || provider.currentIndex == 1
                   ? [
               Padding(
-                padding: const EdgeInsets.only(right: 8.0),
+                padding: const EdgeInsetsDirectional.only(end: 8.0),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(8)),
@@ -83,12 +85,12 @@ class _StartScreenState extends State<StartScreen> {
                   ),
                   onPressed: (){
                     pageController.animateToPage(
-                      onboardingModel.onboardingList.length - 1,
+                      onboardingList.length - 1,
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.easeInOut,
                     );
                   },
-                  child: Text("Skip",style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: .w600),),
+                  child: Text( AppLocalizations.of(context)!.skip,style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: .w600),),
                 ),
               )
               ]

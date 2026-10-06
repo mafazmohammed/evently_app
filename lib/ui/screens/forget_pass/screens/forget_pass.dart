@@ -1,7 +1,10 @@
 import 'package:evently_app/core/resources/assets_manager.dart';
+import 'package:evently_app/core/resources/strings_manager.dart';
 import 'package:evently_app/core/reuseable_components/custom_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../l10n/app_localizations.dart';
 
 class ForgetPass extends StatelessWidget{
   @override
@@ -9,9 +12,9 @@ class ForgetPass extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
 
-        title: Text("Forget Password",style: Theme.of(context).textTheme.titleLarge,),
+        title: Text( AppLocalizations.of(context)!.forgetPass,style: Theme.of(context).textTheme.titleLarge,),
         leading: Padding(
-          padding: const EdgeInsets.only(left: 8),
+          padding: const EdgeInsetsDirectional.only(start: 8),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
@@ -28,7 +31,7 @@ class ForgetPass extends StatelessWidget{
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsetsDirectional.all(16),
         child: Column(
           children: [
             Image.asset(AssetsManager.forgetPass,
@@ -37,7 +40,7 @@ class ForgetPass extends StatelessWidget{
               fit: .contain,
             ),
             const SizedBox(height: 40,),
-            CustomButton(title: "Reset Password", onClicked: (){}),
+            CustomButton(title:  AppLocalizations.of(context)!.resetPass, onClicked: (){}),
           ],
         ),
       ),

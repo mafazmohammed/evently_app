@@ -1,5 +1,7 @@
 import 'package:evently_app/core/Providers/onboarding_provider.dart';
+import 'package:evently_app/core/resources/strings_manager.dart';
 import 'package:evently_app/core/reuseable_components/custom_button.dart';
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/model/onboarding_model.dart';
 import 'package:evently_app/ui/screens/onboarding_screen/widgets/onboarding_slider.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +14,10 @@ class onboardingContent extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<OnboardingProvider>();
-    final currentOnboardingItem = onboardingModel.onboardingList[provider.currentIndex];
+    final onboardingList = onboardingModel.onboardingList(context);
+    final currentOnboardingItem = onboardingList[provider.currentIndex];
     return Padding(
-        padding: const EdgeInsets.only(top: 24,left: 16,right: 16,bottom: 23),
+        padding: const EdgeInsetsDirectional.only(top: 24,start: 16,end: 16,bottom: 23),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -34,7 +37,7 @@ class onboardingContent extends StatelessWidget{
             SizedBox(height: 16,),
             CustomButton(
               onClicked: () {
-                final isLastPage = provider.currentIndex == onboardingModel.onboardingList.length-1;
+                final isLastPage = provider.currentIndex == onboardingList.length-1;
                 if(isLastPage){
                   Navigator.pushReplacementNamed(context, '/login');
                 }else{
@@ -43,7 +46,7 @@ class onboardingContent extends StatelessWidget{
                     curve: Curves.easeInOut);
                 }
               },
-            title: provider.currentIndex==onboardingModel.onboardingList.length-1 ?"Get started":"Next",),
+            title: provider.currentIndex== onboardingList.length-1 ?AppLocalizations.of(context)!.getStarted: AppLocalizations.of(context)!.next,),
           ],
         ),
       );

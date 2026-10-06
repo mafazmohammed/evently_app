@@ -8,9 +8,10 @@ class OnboardingPageView extends StatelessWidget{
   const OnboardingPageView({super.key , required this.controller});
   @override
   Widget build(BuildContext context) {
+    final onboardingList = onboardingModel.onboardingList(context);
     return  PageView.builder(
       controller: controller,
-      itemCount: onboardingModel.onboardingList.length,
+      itemCount: onboardingList.length,
       onPageChanged: (index) {
         context.read<OnboardingProvider>().onPageChanged(index);
       },
@@ -18,7 +19,7 @@ class OnboardingPageView extends StatelessWidget{
         return Column(
           children: [
             Image.asset(
-              onboardingModel.onboardingList[index].imagePath,
+              onboardingList[index].imagePath,
               color: Theme.of(context).colorScheme.onPrimary,
               height:MediaQuery.of(context).size.height * 0.48,
               fit: .contain,

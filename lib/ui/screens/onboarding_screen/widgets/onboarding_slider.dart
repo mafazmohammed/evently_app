@@ -11,9 +11,10 @@ class OnboardingSlider extends StatelessWidget{
 });
   @override
   Widget build(BuildContext context) {
+    final onboardingList = onboardingModel.onboardingList(context);
     return SmoothPageIndicator(
       controller: controller,
-      count: onboardingModel.onboardingList.length,
+      count: onboardingList.length,
       effect: ExpandingDotsEffect(
         activeDotColor: Theme.of(context).colorScheme.primary,
         dotColor: Theme.of(context).colorScheme.onSurface,
